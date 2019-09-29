@@ -30,10 +30,20 @@ export const User = styled.div`
   display: flex;
   align-items: center;
   font-size: 13px;
+
   img {
     width: 27px;
     height: 27px;
     border-radius: 50%;
     margin-right: 5px;
+  }
+  button{
+    min-width: 60px;
+    margin-left: 15px;
+    padding: 5px;
+    border-radius: 4px;
+    background: #1db854;
+    color: #fff;
+    border: 0;
   }
 `;

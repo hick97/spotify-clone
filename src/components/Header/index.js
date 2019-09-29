@@ -1,18 +1,31 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { Container, Search, User } from './styles';
 
-const Header = () => (
-  <Container>
-    <Search>
-      <input type="text" placeholder="Search" />
-    </Search>
+import { Creators as AuthActions } from '../../store/ducks/auth';
+// import { Container } from './styles';
+export default function Header() {
+  const dispatch = useDispatch();
 
-    <User>
-      <img src="https://avatars1.githubusercontent.com/u/28356094?v=4" alt="Avatar" />
-      Henrique Augusto
-    </User>
-  </Container>
-);
+  function handleSignOut() {
+    dispatch(AuthActions.signOut());
+  }
 
-export default Header;
+  const profile = useSelector(state => state.user.profile);
+
+  return (
+    <Container>
+      <Search>
+        <input type="text" placeholder="Search" />
+      </Search>
+      <div>
+        <User>
+          <img src="https://api.adorable.io/avatars/285/abott@adorable.png" alt="Avatar" />
+          {profile.name}
+          <button onClick={handleSignOut}>Sair</button>
+        </User>
+      </div>
+    </Container>
+  );
+}
